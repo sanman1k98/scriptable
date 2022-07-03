@@ -11,6 +11,7 @@ const ext = ".md"
 
 const now = new Date()
 const id = createID(now)
+console.log(id)
 
 const zettelPath = dir + id + ext
 
@@ -23,28 +24,9 @@ Script.complete()
 
 
 function createID(date) {
-  // Start with an empty string.
-  let id = ""
-  
-  // We don't need to pad the year anytime soon.
-  id = id.concat(date.getFullYear().toString())
-  
-  // The month is represented from 0-11.
-  id = id.concat(pad(date.getMonth() + 1))
-  
-  // The date is represented from 1-31.
-  id = id.concat(pad(date.getDate()))
-  
-  // The hour is represented from 0-23.
-  id = id.concat(pad(date.getHours()))
-  
-  // The minute is represented from 0-59.
-  id = id.concat(pad(date.getMinutes()))
-  
-  // The second is represented from 0-59.
-  id = id.concat(pad(date.getSeconds()))
-  
-  return id
+  const df = new DateFormatter()
+  df.dateFormat = "yyyyMMddHHmmss"
+  return df.string(date)
 }
 
 // Pads `num` with zeros to target length of 2.
