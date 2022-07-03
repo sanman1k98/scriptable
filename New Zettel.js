@@ -14,6 +14,7 @@ const zettelPath = dir + filename + ext
 const url = writer.editNewFileURL(zettelPath)
 
 Safari.open(url)
+Script.setShortcutOutput(url)
 Script.complete()
 
 
