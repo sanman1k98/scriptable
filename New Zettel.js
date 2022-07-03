@@ -3,6 +3,8 @@
 // icon-color: blue; icon-glyph: sticky-note;
 'use strict'
 
+const writer = importModule("modules/writer")
+
 // Path to directory to create new zettels.
 const dir = "/Locations/iCloud/zk/"
 const ext = ".md"
@@ -10,10 +12,12 @@ const ext = ".md"
 const now = new Date()
 const id = createID(now)
 
-console.log(id)
-
 const zettelPath = dir + id + ext
-openNewFile(zettelPath)
+
+const url = writer.editNewFileURL(zettelPath)
+console.log(url)
+
+Safari.open(url)
 
 Script.complete()
 
